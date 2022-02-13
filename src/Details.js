@@ -1,15 +1,17 @@
 import { Component } from "react/cjs/react.production.min";
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
+import Carousel from "./Carousel";
+import ErrorBoundary from "./ErrorBoudary";
 
 class Details extends Component {
-  // Old way
-  constructor() {
-    super();
-    this.state = { loading: true };
-  }
+  // // Old way
+  // constructor() {
+  //   super();
+  //   this.state = { loading: true };
+  // }
 
-  // // New way
-  // state = {loading: true};
+  // New way
+  state = { loading: true };
 
   async componentDidMount() {
     const res = await fetch(
@@ -30,21 +32,48 @@ class Details extends Component {
 
   render() {
     // console.log(this.state);
-    
+
     // // this is where you could add a fancy lading animation
     // if (this.state.loading){
     //   return <h2>loading...</h2>
     // }
-    const { animal, breed, city, state, description, name } = this.state;
+
+    const {
+      animal,
+      breed,
+      city,
+      state,
+      description,
+      name,
+      images,
+    } = this.state;
+
+    // throw new Error("lol it broke");
+
     return (
       <div className="details">
-        <h1>{name}</h1>
-        <h2>{animal} - {breed} - {city} - {state}</h2>
-        <button>Adopt {name}</button>
-        <p>{description}</p>
+        <Carousel images={images} />
+        <div>
+          <h1>{name}</h1>
+          <h2>
+            {animal} - {breed} - {city} - {state}
+          </h2>
+          <button>Adopt {name}</button>
+          <p>{description}</p>
+        </div>
       </div>
-    )
+    );
   }
 }
 
-export default withRouter(Details);
+// HIGHER ORDER COMPONENT
+const DetailsWithRouter = withRouter(Details);
+
+// Example of nested HIGHER ORDER COMPONENTS
+export default function DetailsWithErrorBoundary() {
+  return (
+    <ErrorBoundary>
+      <DetailsWithRouter />
+    </ErrorBoundary>
+  );
+}
