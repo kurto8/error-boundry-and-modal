@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import useBreedList from "./useBreedList";
 import Results from "./Results";
 
-// Object.freeze makes ANIMAL state variable read only (not necessary using map for )
+// Object.freeze makes ANIMAL state variable read only (not necessary using map in return)
 const ANIMALS = Object.freeze(["bird", "cat", "dog", "rabbit", "reptile"]);
 
 const SearchParams = () => {

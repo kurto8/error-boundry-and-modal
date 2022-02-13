@@ -18,9 +18,6 @@ const App = () => {
           <Route path="/" component={SearchParams} />
         </Switch>
       </Router>
-      {/* <Pet name="Luna" animal="dog" breed="Havanese" />
-      <Pet name="Pepper" animal="bird" breed="Cockatiel" />
-      <Pet name="Doink" animal="cat" breed="Mix" /> */}
     </div>
   );
 };
@@ -32,8 +29,17 @@ render(
   document.getElementById("root")
 );
 
-/** WHATS HAPPENING UNDER THE HOOD */
+
 // const App = () => {
+//   return (
+//       <div>
+//         <Pet name="Luna" animal="dog" breed="Havanese" />
+//         <Pet name="Pepper" animal="bird" breed="Cockatiel" />
+//         <Pet name="Doink" animal="cat" breed="Mix" />
+//       </div>
+// )
+
+/** WHATS HAPPENING UNDER THE HOOD ABOVE*/
 //   return React.createElement("div", {}, [
 //     React.createElement("h1", {}, "Adopt Me!"),
 //     React.createElement(Pet, {

@@ -32,8 +32,8 @@ class Details extends Component {
 
   render() {
     // console.log(this.state);
-
-    // // this is where you could add a fancy lading animation
+    
+    // this is where you could add a fancy lading animation
     // if (this.state.loading){
     //   return <h2>loading...</h2>
     // }
