@@ -1,24 +1,28 @@
-import { StrictMode } from "react/cjs/react.production.min";
+import { useState, StrictMode } from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
+import ThemeContext from "./ThemeContext";
 
 const App = () => {
+  const theme = useState("#86d6db");
   return (
-    <div>
-      <Router>
-        <header>
-          <Link to="/">
-            <h1>Adopt Me!</h1>
-          </Link>
-        </header>
-        <Switch>
-          <Route path="/details/:id" component={Details} />
-          <Route path="/" component={SearchParams} />
-        </Switch>
-      </Router>
-    </div>
+    <ThemeContext.Provider value={theme}>
+      <div>
+        <Router>
+          <header>
+            <Link to="/">
+              <h1>Adopt Me!</h1>
+            </Link>
+          </header>
+          <Switch>
+            <Route path="/details/:id" component={Details} />
+            <Route path="/" component={SearchParams} />
+          </Switch>
+        </Router>
+      </div>
+    </ThemeContext.Provider>
   );
 };
 
@@ -28,7 +32,6 @@ render(
   </StrictMode>,
   document.getElementById("root")
 );
-
 
 // const App = () => {
 //   return (

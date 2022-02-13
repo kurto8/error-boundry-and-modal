@@ -1,4 +1,4 @@
-import { Component } from "react/cjs/react.production.min";
+import { Component } from "react";
 
 class Carousel extends Component {
   state = {
@@ -12,7 +12,7 @@ class Carousel extends Component {
 
   // using arrow function here eliminates the need for .bind(this) on line 36
   handleIndexClick = (e) => {
-    console.log(this)
+    // console.log(this)
     this.setState({
       // dataset is HTML verbage, this accesses data-index on img tag below
       // "+" converts incoming event string a number

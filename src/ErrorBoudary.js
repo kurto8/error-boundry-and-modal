@@ -2,14 +2,11 @@
 // They are only available in CLASS COMPONENTS
 // This is a HIGHER ORDER COMPONENT. IE adds functionality and not display
 
-import { Component } from "react/cjs/react.production.min";
+import { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 
 class ErrorBoundary extends Component {
-  state = {
-    hasError: false,
-    redirect: false,
-  };
+  state = { hasError: false };
   static getDerivedStateFromError() {
     return { hasError: true };
   }
@@ -17,10 +14,10 @@ class ErrorBoundary extends Component {
   componentDidCatch(error, info) {
     // Should log this to Sentry, Azure Monitor, New Relic, TrackJS
     console.error("ErrorBoundary caught adn error:", error, info);
-    setTimeout(() => this.setState({ redirect: true }), 5000);
+    setTimeout(() => this.setState({ redirect: true, redirect: false }), 5000);
   }
 
-  // // Can't use this upon initial load. SO, didn't work with our fake error from Details line 51
+  // // Can't use for errors upon initial load. SO, didn't work with our fake error from Details line 51
   // componentDidUpdate() {
   //   if (this.state.hasError) {
   //     setTimeout(() => this.setState({ redirect: true }), 5000);
